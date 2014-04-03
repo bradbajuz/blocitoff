@@ -29,6 +29,8 @@ GEM
     arel (4.0.2)
     atomic (1.1.16)
     bcrypt (3.1.7)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     builder (3.1.4)
@@ -40,6 +42,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     database_cleaner (1.0.1)
+    debug_inspector (0.0.2)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -78,7 +81,9 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
+    newrelic_rpm (3.7.3.204)
     orm_adapter (0.5.0)
+    pg (0.17.1)
     polyglot (0.3.4)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
@@ -151,6 +156,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  binding_of_caller
   bootstrap-sass
   coffee-rails (~> 4.0.0)
   database_cleaner (= 1.0.1)
@@ -161,6 +167,8 @@ DEPENDENCIES
   hub
   jbuilder (~> 1.2)
   jquery-rails
+  newrelic_rpm
+  pg
   quiet_assets
   rails (= 4.0.4)
   rails_layout
