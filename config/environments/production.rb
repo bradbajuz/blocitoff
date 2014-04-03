@@ -20,20 +20,20 @@ Blocitoff::Application.configure do
   # config.action_dispatch.rack_cache = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs.
   config.assets.digest = true
 
   # Version of your assets, change this if you want to expire all your assets.
-  config.assets.version = '1.0'
+  # config.assets.version = '1.0'
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
@@ -74,14 +74,15 @@ Blocitoff::Application.configure do
 
   config.action_mailer.smtp_settings = {
     address: "smtp.sendgrid.net",
-    port: 587,
-    domain: ENV["DOMAIN_NAME"],
+    port: '587',
+    domain: 'heroku.com',
     authentication: "plain",
     user_name: ENV["SENDGRID_USERNAME"],
-    password: ENV["SENDGRID_PASSWORD"]
+    password: ENV["SENDGRID_PASSWORD"],
+    enable_starttls_auto: true
   }
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'example.com' }
+  config.action_mailer.default_url_options = { :host => 'brad-blocitoff.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
