@@ -1,1 +1,7 @@
 <h1>My To Do Items</h1>
+
+<table>
+  <% @to_do_items.each do |item| %>
+    <tr><td><%= item.description %></td></tr>
+  <% end %>
+</table>
