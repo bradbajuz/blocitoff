@@ -12,6 +12,7 @@ gem 'devise'
 gem 'figaro'
 gem 'sendgrid'
 gem 'newrelic_rpm'
+gem 'rails_admin', '~> 0.6.1'
 group :development do
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'hub', :require=>nil

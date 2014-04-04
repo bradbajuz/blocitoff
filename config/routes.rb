@@ -1,5 +1,5 @@
 Blocitoff::Application.routes.draw do
-  # get "to_do_items/index"
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   root :to => "home#index"
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources :users
