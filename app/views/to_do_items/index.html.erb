@@ -1,7 +1,23 @@
 <h1>My To Do Items</h1>
-
-<table>
+</br>
+<table width="600" cellpadding="10" cellspacing="5">
+  <tr>
+    <th></th>
+    <th scope="col">Description</th>
+    <th scope="col">Days left</th>
+    <th scope="col">Complete</th>
+  </tr>
   <% @to_do_items.each do |item| %>
-    <tr><td><%= item.description %></td></tr>
+    <tr>
+      <th></th>
+      <td><%= item.description %></td>
+      <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
+      <td>
+        <%= form_for @to_do_item do |f| %>
+          <%= f.check_box :complete %>
+        <% end %>
+      </td>
+    </tr>
   <% end %>
+
 </table>
