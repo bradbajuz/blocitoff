@@ -6,4 +6,26 @@ class ToDoItemsController < ApplicationController
 
     authorize @to_do_item
   end
+
+  def new
+    @to_do_item = ToDoItem.new
+
+  end
+
+  def create
+    @to_do_item = ToDoItem.new(to_do_item_params)
+
+    authorize @to_do_item
+
+    if @to_do_item.save
+      redirect_to to_do_items_path, notice: "Item was saved successfully."
+    else
+      flash[:error] = "Error creating todo. Please try again."
+      render :index
+    end
+  end
+
+  def to_do_item_params
+    params.require(:to_do_item).permit(:description)
+  end
 end
