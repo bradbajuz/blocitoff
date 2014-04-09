@@ -1,35 +1,28 @@
 <h1>My To Do Items</h1>
 </br>
-<table width="600" cellpadding="10" cellspacing="5">
-  <tr>
-    <th></th>
-    <th scope="col">Description</th>
-    <th scope="col">Days left</th>
-    <th scope="col">Complete</th>
-  </tr>
-  <% @to_do_items.each do |item| %>
+
+<div class="col-md-2">
+  <table width="600" cellpadding="1" cellspacing="1">
     <tr>
       <th></th>
-      <td><%= item.description %></td>
-      <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
-      <td>
-        <%= form_for @to_do_item do |f| %>
-          <%= f.check_box :complete %>
-        <% end %>
-      </td>
+      <th scope="col">Description</th>
+      <th scope="col">Days left</th>
+      <th scope="col">Complete</th>
     </tr>
-  <% end %>
+    <% @to_do_items.each do |item| %>
+      <tr>
+        <th></th>
+        <td><%= item.description %></td>
+        <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
+        <td>
+          <%= form_for @to_do_item do |f| %>
+            <%= f.check_box :complete %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  </br>
+  <%= render partial: 'form', locals: { to_do_item: @to_do_item } %>
+</div>
 
-</table>
-
-</br>
-
-<%= form_for @to_do_item do |f| %>
-  <div class="form-group">
-    <%= f.text_area :description, rows: 1, cols: 40, placeholder: "Enter task" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit "Add Task", class: 'btn btn-success' %>
-  </div>
-<% end %>

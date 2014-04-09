@@ -17,7 +17,7 @@ class ToDoItemsController < ApplicationController
       redirect_to to_do_items_path, notice: "Item was saved successfully."
     else
       flash[:error] = "Error creating todo. Please try again."
-      render :index
+      redirect_to @to_do_item
     end
   end
 
