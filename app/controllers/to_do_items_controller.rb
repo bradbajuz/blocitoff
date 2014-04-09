@@ -7,13 +7,9 @@ class ToDoItemsController < ApplicationController
     authorize @to_do_item
   end
 
-  def new
-    @to_do_item = ToDoItem.new
-
-  end
-
   def create
-    @to_do_item = ToDoItem.new(to_do_item_params)
+    @to_do_item = ToDoItem.new
+    @to_do_item = current_user.to_do_items.build(to_do_item_params)
 
     authorize @to_do_item
 
