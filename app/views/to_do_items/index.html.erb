@@ -15,14 +15,16 @@
         <td><%= item.description %></td>
         <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
         <td>
-          <%= form_for @to_do_item do |f| %>
-            <%= f.check_box :complete %>
-          <% end %>
+        <% if policy(@to_do_item).destroy? %>
+          <%= link_to 'Done!', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
         </td>
       </tr>
     <% end %>
   </table>
   </br>
+  <% if policy(@to_do_item).create? %>
   <%= render partial: 'form', locals: { to_do_item: @to_do_item } %>
+  <% end %>
 </div>
 
