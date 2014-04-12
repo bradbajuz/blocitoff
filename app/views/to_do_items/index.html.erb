@@ -15,8 +15,10 @@
         <td><%= item.description %></td>
         <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
         <td>
-        <% if policy(@to_do_item).destroy? %>
-          <%= link_to 'Done!', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= content_tag :div, id: "to_do_item-#{@to_do_item.id}" do %>
+          <% if policy(@to_do_item).destroy? %>
+            <%= link_to 'Done!', item, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+          <% end %>
         <% end %>
         </td>
       </tr>

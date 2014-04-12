@@ -1,4 +1,6 @@
 class ToDoItemsController < ApplicationController
+  respond_to :html, :js
+
   def index
     @to_do_item = ToDoItem.new
     @to_do_items = ToDoItem.all
@@ -32,10 +34,14 @@ class ToDoItemsController < ApplicationController
 
     if @to_do_item.destroy
       flash[:notice] = "\"#{description}\" was deleted successfully."
-      redirect_to to_do_items_path
+      # redirect_to to_do_items_path
     else
       flash[:error] = "There was an error deleting the todo."
-      render "to_do_items/index"
+      # render "to_do_items/index"
+    end
+
+    respond_with(@to_do_item) do |f|
+      f.html { redirect_to @to_do_item }
     end
   end
 
