@@ -9,17 +9,19 @@
       <th scope="col">Days left</th>
       <th scope="col">Complete</th>
     </tr>
+
     <% @to_do_items.each do |item| %>
       <tr>
         <th></th>
+
         <td><%= item.description %></td>
         <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
         <td>
-        <%= content_tag :div, id: "to_do_item-#{@to_do_item.id}" do %>
-          <% if policy(@to_do_item).destroy? %>
-            <%= link_to 'Done!', item, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+          <%= content_tag :div, class: 'media', id: "to_do_item-#{item.id}" do %>
+            <% if policy(@to_do_item).destroy? %>
+              <%= link_to 'Done!', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+            <% end %>
           <% end %>
-        <% end %>
         </td>
       </tr>
     <% end %>

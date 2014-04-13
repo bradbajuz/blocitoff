@@ -29,14 +29,13 @@ class ToDoItemsController < ApplicationController
   def destroy
     @to_do_item = ToDoItem.find(params[:id])
     description = @to_do_item.description
-    @to_do_item.destroy
     authorize @to_do_item
 
     if @to_do_item.destroy
       flash[:notice] = "\"#{description}\" was deleted successfully."
       # redirect_to to_do_items_path
     else
-      flash[:error] = "There was an error deleting the todo."
+      flash[:error] = "There was error deleting \"#{description}\"."
       # render "to_do_items/index"
     end
 
