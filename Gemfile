@@ -14,6 +14,8 @@ gem 'pundit'
 gem 'sendgrid'
 gem 'newrelic_rpm'
 gem 'rails_admin', '~> 0.6.1'
+gem 'whenever', require: false
+gem 'psych'
 group :development do
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
   gem 'hub', :require=>nil
