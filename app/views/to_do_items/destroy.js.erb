@@ -1,5 +1,7 @@
 <% if @to_do_item.destroyed? %>
-  $('#to_do_item-' +<%= @to_do_item.id %>).hide();
+  $('#to_do_item_1-' +<%= @to_do_item.id %>).hide();
+  $('#to_do_item_2-' +<%= @to_do_item.id %>).hide();
+  $('#to_do_item_3-' +<%= @to_do_item.id %>).hide();
 <% else %>
   $('#to_do_item-' +<%= @to_do_item.id %>).prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
 <% end %>
