@@ -17,13 +17,13 @@
   <% @to_do_items.each do |item| %>
     <tr>
       <td></td>
-      <%= content_tag :td, class: 'media', id: "to_do_item_1-#{item.id}" do %>
+      <%= content_tag :td, class: 'media', id: "to_do_item-#{item.id}" do %>
         <%= item.description %>
-      <% end %>
-      <%= content_tag :td, class: 'media', id: "to_do_item_2-#{item.id}" do %>
+      
+      
         <%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %>
-      <% end %>
-      <%= content_tag :td, class: 'media', id: "to_do_item_3-#{item.id}" do %>
+      
+      
         <% if policy(@to_do_item).destroy? %>
           <%= link_to 'Done!', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
         <% end %>
