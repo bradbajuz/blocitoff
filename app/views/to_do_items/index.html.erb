@@ -15,19 +15,15 @@
 </thead>
 <tbody>
   <% @to_do_items.each do |item| %>
-    <tr>
+    <tr id="<%= "to_do_items-#{item.id}" %>">
       <td></td>
-      <%= content_tag :td, class: 'media', id: "to_do_item-#{item.id}" do %>
-        <%= item.description %>
-      
-      
-        <%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %>
-      
-      
-        <% if policy(@to_do_item).destroy? %>
-          <%= link_to 'Done!', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
-        <% end %>
-      <% end %>
+        <td><%= item.description %></td>
+        <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
+        <td>
+          <% if policy(@to_do_item).destroy? %>
+            <%= link_to 'Done!', item, method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
+          <% end %>
+        </td>
     </tr>
   <% end %>
 </tbody>
