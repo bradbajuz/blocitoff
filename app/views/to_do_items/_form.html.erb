@@ -1,7 +1,7 @@
-<%= form_for to_do_item do |f| %>
+<%= form_for to_do_item, remote: true do |f| %>
   <% if to_do_item.errors.any? %>
     <div class="alert alert-danger">
-      <h4>There are <%= pluralize(to_do_item.errors.count, "error") %>.</h4>
+      <h4>There are <%= pluralize(to_do_item.errors.count, "error") %> errors.</h4>
       <ul>
         <% to_do_item.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>

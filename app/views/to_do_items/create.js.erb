@@ -1,0 +1,6 @@
+<% if @to_do_item.valid? %>
+  $('#to_do_list').prepend("<%= escape_javascript(render(@to_do_item)) %>");
+  $(".new_to_do_item").replaceWith("<%= escape_javascript(render partial: 'to_do_items/form', locals: { to_do_item: @new_to_do_item }) %>");
+<% else %>
+  $('.new_to_do_item').replaceWith("<%= escape_javascript(render partial: 'to_do_items/form', locals: { to_do_item: @to_do_item }) %>");
+<% end %>
